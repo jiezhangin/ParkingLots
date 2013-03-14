@@ -22,7 +22,7 @@ class ParkingLotsTest < MiniTest::Unit::TestCase
 	def test_can_park_when_parking_lots_available
 		parkingTicket = @plots.park("car1")
 		assert !parkingTicket.nil?
-		assert_equal "car1", parkingTicket.id
+		assert parkingTicket
 	end
 	
 	
@@ -32,4 +32,17 @@ class ParkingLotsTest < MiniTest::Unit::TestCase
 			@plots.park("car2")
 		end
 	end
+	
+	def test_can_pick_up_car_with_valid_ticket
+		parkingTicket = @plots.park("car1")
+		car = @plots.pick(parkingTicket)
+		assert_equal "car1", car
+	end
+	
+	def test_can_not_pick_up_car_with_invalid_ticket
+		parkingTicket = Ticket.new("NotExist")
+		car = @plots.pick(parkingTicket)
+		assert_nil car
+	end
+		
 end
