@@ -45,4 +45,5 @@ class ParkingLotsTest < MiniTest::Unit::TestCase
 		assert_nil car
 	end
 		
+	
 end
