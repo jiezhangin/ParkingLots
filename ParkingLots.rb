@@ -10,12 +10,12 @@ class ParkingLots
 	
 	attr_reader :availalbe_lots_count
 	
-	def empty?
-		@availalbe_lots_count < 1
+	def has_empty?
+		@availalbe_lots_count > 0
 	end
 	
 	def park(carID)
-		raise NoParkingLotsException.new("Sorry, no parking lot avaialbe!") if empty?
+		raise NoParkingLotsException.new("Sorry, no parking lot avaialbe!") if !has_empty?
 		@availalbe_lots_count = @availalbe_lots_count - 1
 		ticket = Ticket.new(availalbe_lots_count)
 		@cars[ticket] = carID

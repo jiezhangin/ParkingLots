@@ -10,13 +10,13 @@ class ParkingLotsTest < MiniTest::Unit::TestCase
 	end
 
 
-	def test_is_not_empty
-		assert !@plots.empty?
+	def test_has_empty_space
+		assert @plots.has_empty?
 	end
 	
-	def test_is_empty
+	def test_is_full
 		@plots.park("car1")
-		assert @plots.empty?
+		assert !@plots.has_empty?
 	end
 	
 	def test_can_park_when_parking_lots_available

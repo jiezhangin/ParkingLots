@@ -9,7 +9,7 @@ class ParkingBoy
 	
 	def has_empty
 		 @parkingLotsList.each do |parkingLots|
-			if !parkingLots.empty?
+			if parkingLots.has_empty?
 				return true
 			end
 		end
@@ -18,7 +18,7 @@ class ParkingBoy
 	
 	def park(carID)
 		@parkingLotsList.each do |parkingLots|
-			if !parkingLots.empty?
+			if parkingLots.has_empty?
 				return parkingLots.park(carID)
 			end
 		end
