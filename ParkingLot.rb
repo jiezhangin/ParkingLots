@@ -1,9 +1,9 @@
 require_relative './Ticket'
 require_relative './NoParkingLotsException'
 
-class ParkingLots
+class ParkingLot
 	def initialize(lotsCount)
-		puts "In ParkingLots"
+		puts "In ParkingLot"
 		@availalbe_lots_count = lotsCount
 		@cars = {}
 	end

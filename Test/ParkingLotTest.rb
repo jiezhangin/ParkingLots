@@ -1,12 +1,12 @@
-require '../ParkingLots' 
+require '../ParkingLot' 
 require '../Ticket'
 require '../NoParkingLotsException'
 require 'minitest/autorun'
 
-class ParkingLotsTest < MiniTest::Unit::TestCase
+class ParkingLotTest < MiniTest::Unit::TestCase
 
 	def setup     #Test initialize
-		@plots = ParkingLots.new(1)
+		@plots = ParkingLot.new(1)
 	end
 
 

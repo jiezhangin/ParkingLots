@@ -1,15 +1,13 @@
 class ParkingBoy
-	def initialize(*parkingLotsList)
-		@numOfParkingLots = parkingLotsList.length
-		@parkingLotsList = parkingLotsList
+	def initialize(*parkingLots)
+		@parkingLots = parkingLots
 		
 	end
 	
-	attr_reader :numOfParkingLots
 	
 	def has_empty
-		 @parkingLotsList.each do |parkingLots|
-			if parkingLots.has_empty?
+		 @parkingLots.each do |parkingLot|
+			if parkingLot.has_empty?
 				return true
 			end
 		end
@@ -17,17 +15,17 @@ class ParkingBoy
 	end
 	
 	def park(carID)
-		@parkingLotsList.each do |parkingLots|
-			if parkingLots.has_empty?
-				return parkingLots.park(carID)
+		@parkingLots.each do |parkingLot|
+			if parkingLot.has_empty?
+				return parkingLot.park(carID)
 			end
 		end
 		raise NoParkingLotsException.new("Sorry, no parking lot avaialbe!")
 	end
 	
 	def pick(ticket)
-		@parkingLotsList.each do |parkingLots|
-			car = parkingLots.pick(ticket)
+		@parkingLots.each do |parkingLot|
+			car = parkingLot.pick(ticket)
 			if car
 				return car
 			end

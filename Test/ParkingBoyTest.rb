@@ -1,4 +1,4 @@
-require '../ParkingLots' 
+require '../ParkingLot' 
 require '../ParkingBoy'
 require '../Ticket'
 require '../NoParkingLotsException'
@@ -7,13 +7,13 @@ require 'minitest/autorun'
 class ParkingBoyTest < MiniTest::Unit::TestCase
 
 	def setup     #Test initialize
-		@parkingBoyWithTwoSpaces = ParkingBoy.new(ParkingLots.new(2))
+		@parkingBoyWithTwoSpaces = ParkingBoy.new(ParkingLot.new(2))
 		@parkedCarID1 = "car1"
 		@parkedCarID2 = "car2"
 	end
 	
 	def test_should_return_true_when_parking_lots_has_empty_space
-		parkingBoy = ParkingBoy.new(ParkingLots.new(2), ParkingLots.new(3));
+		parkingBoy = ParkingBoy.new(ParkingLot.new(2), ParkingLot.new(3));
 		assert parkingBoy.has_empty
 	end
 	
@@ -23,9 +23,9 @@ class ParkingBoyTest < MiniTest::Unit::TestCase
 	end
 		
 	def test_should_return_false_when_parking_lots_are_full
-		parkingLots = ParkingLots.new(1)
-		parkingLots.park(@parkedCarID1)
-		parkingBoy = ParkingBoy.new(parkingLots);
+		parkingLot = ParkingLot.new(1)
+		parkingLot.park(@parkedCarID1)
+		parkingBoy = ParkingBoy.new(parkingLot);
 		
 		assert !parkingBoy.has_empty
 	end
