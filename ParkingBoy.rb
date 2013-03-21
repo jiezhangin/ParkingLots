@@ -1,5 +1,5 @@
 class ParkingBoy
-	def initialize(parkingLotsList)
+	def initialize(*parkingLotsList)
 		@numOfParkingLots = parkingLotsList.length
 		@parkingLotsList = parkingLotsList
 		
@@ -29,7 +29,6 @@ class ParkingBoy
 		@parkingLotsList.each do |parkingLots|
 			car = parkingLots.pick(ticket)
 			if car
-				puts "car is found"
 				return car
 			end
 		end
