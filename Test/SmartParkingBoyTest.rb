@@ -8,29 +8,23 @@ require 'minitest/autorun'
 class SmartParkingBoyTest < MiniTest::Unit::TestCase
 
 	def setup
-		parkingLotWithTwoSpaces = ParkingLot.new(2);
-		parkingLotWithThreeSpaces = ParkingLot.new(3);
-		parkingLotWithFourSpaces = ParkingLot.new(4);
-		@smartParkingBoy = SmartParkingBoy.new(parkingLotWithTwoSpaces, parkingLotWithThreeSpaces, parkingLotWithFourSpaces);
+		@parkingLotWithTwoSpaces = ParkingLot.new(2);
+		@parkingLotWithThreeSpaces = ParkingLot.new(3);
+		@parkingLotWithFourSpaces = ParkingLot.new(4);
+		@smartParkingBoy = SmartParkingBoy.new(@parkingLotWithTwoSpaces, @parkingLotWithThreeSpaces, @parkingLotWithFourSpaces);
 		
 		@parkedCarID1 = "car1"
 		@parkedCarID2 = "car2"
 	end
 	
 	def test_should_parking_in_the_parkinglot_with_most_spaces
-		parkingLotWithTwoSpaces = ParkingLot.new(2);
-		parkingLotWithThreeSpaces = ParkingLot.new(3);
-		parkingLotWithFourSpaces = ParkingLot.new(4);
-		parkingBoy = SmartParkingBoy.new(parkingLotWithTwoSpaces, parkingLotWithThreeSpaces, parkingLotWithFourSpaces);
+		ticket = @smartParkingBoy.park(@parkedCarID1)
 		
-		ticket = parkingBoy.park(@parkedCarID1)
-		
-		assert_equal 3, parkingLotWithFourSpaces.availalbe_lots_count
+		assert_equal 3, @parkingLotWithFourSpaces.availalbe_lots_count
 	end
 	
 	def test_should_return_true_when_parking_lots_has_empty_space
-		parkingBoy = SmartParkingBoy.new(ParkingLot.new(2), ParkingLot.new(3));
-		assert parkingBoy.has_empty
+		assert @smartParkingBoy.has_empty
 	end
 	
 	def test_should_return_false_when_there_is_no_parking_lots

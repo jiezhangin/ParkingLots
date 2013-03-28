@@ -15,12 +15,9 @@ class ParkingBoy
 	end
 	
 	def park(carID)
-		@parkingLots.each do |parkingLot|
-			if parkingLot.has_empty?
-				return parkingLot.park(carID)
-			end
-		end
-		raise NoParkingLotsException.new("Sorry, no parking lot avaialbe!")
+		lot = @parkingLots.select{|lot|lot.has_empty?}.first
+		raise NoParkingLotsException.new("Sorry, no parking lot avaialbe!") if lot.nil?
+		lot.park(carID)
 	end
 	
 	def pick(ticket)
