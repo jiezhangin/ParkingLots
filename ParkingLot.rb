@@ -3,7 +3,6 @@ require_relative './NoParkingLotsException'
 
 class ParkingLot
 	def initialize(lotsCount)
-		puts "In ParkingLot"
 		@availalbe_lots_count = lotsCount
 		@cars = {}
 	end
